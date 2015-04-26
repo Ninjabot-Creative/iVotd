@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426134148) do
+ActiveRecord::Schema.define(version: 20150426182512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,26 @@ ActiveRecord::Schema.define(version: 20150426134148) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "candidates_polls", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "poll_id"
+  end
+
   create_table "polls", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
+  add_index "polls", ["user_id"], name: "index_polls_on_user_id", using: :btree
+
   create_table "query_snapshots", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "candidate_id"
   end
+
+  add_index "query_snapshots", ["candidate_id"], name: "index_query_snapshots_on_candidate_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -49,4 +60,6 @@ ActiveRecord::Schema.define(version: 20150426134148) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "polls", "users"
+  add_foreign_key "query_snapshots", "candidates"
 end
