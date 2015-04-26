@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :polls
 
   devise_for :users
-  resources :users
+  resources :users, :except => [:index]
 
   get 'welcome/index'
 
