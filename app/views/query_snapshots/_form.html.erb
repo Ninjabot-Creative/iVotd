@@ -1,0 +1,17 @@
+<%= form_for(@query_snapshot) do |f| %>
+  <% if @query_snapshot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@query_snapshot.errors.count, "error") %> prohibited this query_snapshot from being saved:</h2>
+
+      <ul>
+      <% @query_snapshot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

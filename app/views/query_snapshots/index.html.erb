@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Query Snapshots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @query_snapshots.each do |query_snapshot| %>
+      <tr>
+        <td><%= link_to 'Show', query_snapshot %></td>
+        <td><%= link_to 'Edit', edit_query_snapshot_path(query_snapshot) %></td>
+        <td><%= link_to 'Destroy', query_snapshot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Query snapshot', new_query_snapshot_path %>

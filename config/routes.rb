@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :query_snapshots
+
   resources :candidates
 
   resources :polls

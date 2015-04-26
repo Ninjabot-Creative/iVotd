@@ -1,0 +1,2 @@
+module QuerySnapshotsHelper
+end
