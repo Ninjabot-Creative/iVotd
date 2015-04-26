@@ -16,6 +16,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/new
   def new
     @candidate = Candidate.new
+    @candidate.query_snapshots.build
   end
 
   # GET /candidates/1/edit
@@ -26,6 +27,9 @@ class CandidatesController < ApplicationController
   # POST /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
+    candidate_tweets = twitter.search(@candidate.title).to_a
+    candidate_count = candidate_tweets.count
+    @candidate.query_snapshots.count = candidate_count 
 
     respond_to do |format|
       if @candidate.save
@@ -70,6 +74,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:title)
+      params.require(:candidate).permit(:title, query_snapshots_attributes: [:id, :count])
     end
 end

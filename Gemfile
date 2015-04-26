@@ -50,3 +50,5 @@ end
 gem 'pg'
 
 gem 'devise'
+
+gem 'twitter'
