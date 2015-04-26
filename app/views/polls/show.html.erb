@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
+  
+<p> 
+  <h1><%= @poll.title %></h1>
+</p>  
 
-<%= link_to 'Edit', edit_poll_path(@poll) %> |
-<%= link_to 'Back', polls_path %>
+<p> 
+  <strong>Candidates: </strong>
+</p> 
+  
+<ul>  
+  <% for candidate in @poll.candidates %>  
+  <li><%= candidate.title %></li>  
+  <% end %>  
+</ul>  
+
+<p>  
+  <%= link_to "Edit", edit_poll_path(@poll) %> |  
+  <%= link_to "Destroy", @poll, :confirm => 'Are you sure?', :method => :delete %> |  
+  <%= link_to "View All", polls_path %>  
+</p> 

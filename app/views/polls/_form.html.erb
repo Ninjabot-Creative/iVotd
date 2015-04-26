@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label "Poll Title:" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <%= f.fields_for :candidates do |builder| %>  
+  <div>  
+    <%= builder.label "Candidate:" %><br />  
+    <%= builder.text_field :title %>
+    <%= builder.check_box :_destroy %>  
+    <%= builder.label :_destroy, "Remove Candidate" %> 
+  </div>
+  <% end %>  
+
+  <br>
+
   <div class="actions">
     <%= f.submit %>
   </div>
