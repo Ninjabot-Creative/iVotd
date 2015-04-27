@@ -10,7 +10,7 @@
   
 <ul>  
   <% for candidate in @poll.candidates %>  
-  <li><%= candidate.title %></li>  
+  <li><%= candidate.title + " | Count = " + candidate.query_snapshots.first.count.to_s %></li>  
   <% end %>  
 </ul>  
 

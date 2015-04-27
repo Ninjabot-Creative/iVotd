@@ -70,6 +70,6 @@ class QuerySnapshotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_snapshot_params
-      params.require(:candidate).permit(:count)
+      params.require(:query_snapshot).permit(:count)
     end
 end

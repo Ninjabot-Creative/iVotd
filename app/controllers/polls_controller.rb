@@ -16,7 +16,10 @@ class PollsController < ApplicationController
   # GET /polls/new
   def new
     @poll = Poll.new
-    2.times { @poll.candidates.build }
+    2.times do 
+      candidate = @poll.candidates.build
+      candidate.query_snapshots.build
+    end
   end
 
   # GET /polls/1/edit
